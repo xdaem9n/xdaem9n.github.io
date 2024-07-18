@@ -34,37 +34,3 @@ class _MyAppState extends State<MyApp> {
 
 
 
-/*class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  bool isDarkTheme = true;
-
-  void toggleTheme() {
-    setState(() {
-      isDarkTheme = !isDarkTheme;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'DarkLight Theme',
-        theme: isDarkTheme ? ThemeData.dark() : ThemeData.light(),
-        home: Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(
-                icon: Icon(isDarkTheme ? Icons.brightness_7 : Icons.brightness_2),
-                    onPressed: toggleTheme,
-              ),
-            ],
-          ),
-        ),
-      );
-  }
-}*/
