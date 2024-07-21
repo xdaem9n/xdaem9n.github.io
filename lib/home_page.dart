@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height, // Ensure it fills the height
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/arrow.jpeg'),
+                          image: AssetImage('assets/arrow.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
