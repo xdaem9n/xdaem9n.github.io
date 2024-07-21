@@ -42,11 +42,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.search, color: widget.isDarkMode ? Colors.white : Colors.black),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.brightness_6, color: widget.isDarkMode ? Colors.white : Colors.black),
+            icon: Icon(widget.isDarkMode ? Icons.brightness_4 : Icons.brightness_6, color: widget.isDarkMode ? Colors.white : Colors.black),
             onPressed: widget.toggleTheme,
           ),
         ],
@@ -139,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height, // Ensure it fills the height
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/arrow.jpg'),
+                          image: AssetImage('assets/arrow.jpeg'),
                           fit: BoxFit.cover,
                         ),
                       ),
