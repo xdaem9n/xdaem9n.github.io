@@ -53,98 +53,99 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Row(
+          child: Column(
             children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(flex: 2),
-                      ShaderMask(
-                        shaderCallback: (Rect bounds) {
-                          return const LinearGradient(
-                            colors: <Color>[Colors.green, Colors.blue],
-                            tileMode: TileMode.mirror,
-                          ).createShader(bounds);
-                        },
-                        child: const Text(
-                          'ORGANIZE YOUR NOTES WITH EASE',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 80,
-                            fontWeight: FontWeight.bold,
-                            height: 0.95,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        'Capture, organize, and share your notes. Sign up to be notified',
-                        style: TextStyle(
-                          color: widget.isDarkMode ? Colors.white : Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Image.asset(
-                        widget.isDarkMode ? 'assets/dark_theme_image.png' : 'assets/light_theme_image.png',
-                        width: 50,
-                        height: 50,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: TextField(
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: widget.isDarkMode ? Colors.grey[800] : Colors.grey[300],
-                                hintText: 'Your email',
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  borderSide: BorderSide.none,
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: <Color>[Colors.green, Colors.blue],
+                                tileMode: TileMode.mirror,
+                              ).createShader(bounds);
+                            },
+                            child: const Text(
+                              'ORGANIZE YOUR NOTES WITH EASE',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 80,
+                                fontWeight: FontWeight.bold,
+                                height: 0.95,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            'Capture, organize, and share your notes. Sign up to be notified',
+                            style: TextStyle(
+                              color: widget.isDarkMode ? Colors.white : Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Image.asset(
+                            widget.isDarkMode ? 'assets/dark_theme_image.png' : 'assets/light_theme_image.png',
+                            width: 50,
+                            height: 50,
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: widget.isDarkMode ? Colors.grey[800] : Colors.grey[300],
+                                    hintText: 'Your email',
+                                    hintStyle: const TextStyle(color: Colors.grey),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                  style: TextStyle(color: widget.isDarkMode ? Colors.white : Colors.black),
                                 ),
                               ),
-                              style: TextStyle(color: widget.isDarkMode ? Colors.white : Colors.black),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: widget.isDarkMode ? Colors.blue : Colors.green,
-                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
+                              const SizedBox(width: 10),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: widget.isDarkMode ? Colors.blue : Colors.green,
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                child: const Text('Notify Me'),
                               ),
-                            ),
-                            child: const Text('Notify Me'),
+                            ],
                           ),
                         ],
                       ),
-                      const Spacer(flex: 3),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/arrow.jpg'),
-                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height, // Ensure it fills the height
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/arrow.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
