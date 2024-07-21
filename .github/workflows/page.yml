@@ -46,3 +46,6 @@ jobs:
         with:
           branch: gh-pages
           folder: build/web
+          token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          clean: true
+          force: true
