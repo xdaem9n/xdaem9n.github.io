@@ -1,11 +1,33 @@
+name: Host on GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: cirrusci/flutter:2.22.3 # Use an image with the correct Flutter version
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install Specific Flutter Version
+        run: |
+          wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.22.3-stable.tar.xz
+          tar xf flutter_linux_2.22.3-stable.tar.xz
+          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+
+      - run: flutter --version
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-pub-
 
       - name: Download pub dependencies
         run: flutter pub get
@@ -17,9 +39,9 @@ jobs:
         run: flutter test
 
       - name: Build Web App
-        run: flutter build web --base-href=/xdaem9n
+        run: flutter build web --base-href=/xdaem9n/github.io/
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
