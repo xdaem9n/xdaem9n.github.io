@@ -1,58 +1,24 @@
 name: momnah_portfolio
 description: "A new Flutter project."
+publish_to: 'none' # Prevents accidental publishing
 
-# Prevents the package from being published to pub.dev accidentally
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# Versioning information
 version: 1.0.0+1
-# In Android, `build-name` is used as versionName, and `build-number` as versionCode.
-# In iOS, `build-name` is used as CFBundleShortVersionString, and `build-number` as CFBundleVersion.
-# In Windows, `build-name` and `build-number` are used in the product and file versions.
-# Learn more about versioning at:
-# - Android: https://developer.android.com/studio/publish/versioning
-# - iOS: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: '>=2.14.0 <3.0.0' # Adjusted to fit real Dart versions and your local Dart version
 
 dependencies:
   flutter:
     sdk: flutter
-  confetti: ^0.6.0  # For confetti effects
-  cupertino_icons: ^1.0.6  # Cupertino icons for iOS style icons
+  confetti: ^0.6.0
+  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0  # Recommended set of lints for good coding practices
-
-# Dart tooling specific configuration
-# See: https://dart.dev/tools/pub/pubspec
+  flutter_lints: ^3.0.0
 
 flutter:
-  # Ensure Material Icons font is included
   uses-material-design: true
-
-  # Asset configuration
   assets:
     - images/arrow.jpg
-  # For resolution-specific variants:
-  # - https://flutter.dev/assets-and-images/#resolution-aware
-  # For assets from package dependencies:
-  # - https://flutter.dev/assets-and-images/#from-packages
-
-  # Custom font configuration
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  # For fonts from package dependencies:
-  # - https://flutter.dev/custom-fonts/#from-packages

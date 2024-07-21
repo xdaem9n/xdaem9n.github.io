@@ -1,23 +1,47 @@
-name: Flutter CI
+name: Host on GitHub Pages
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Set up Dart SDK
-      uses: dart-lang/setup-dart@v1.2
-      with:
-        sdk: '>=3.4.3 <4.0.0'  # Specify the Dart SDK version range here
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.22.3' # Use the Flutter version that works on your local setup
 
-    - name: Install dependencies
-      run: dart pub get
+      - run: flutter --version
 
-    - name: Run tests
-      run: dart test
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-pub-
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Run analyzer
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build Web App
+        run: flutter build web --base-href=/xdaem9n
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Ensure this is set to the branch you want to deploy to
+          folder: build/web
